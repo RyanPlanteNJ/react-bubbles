@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axiosWithAuth from '../utils/axiosWithAuth';
+import ColorForm from './ColorForm';
 
 
 const initialColor = {
@@ -11,6 +12,7 @@ const ColorList = ({ colors, updateColors }) => {
   console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
+  
 
   const editColor = color => {
     setEditing(true);
@@ -35,7 +37,7 @@ const ColorList = ({ colors, updateColors }) => {
 
   const deleteColor = color => {
       axiosWithAuth()
-      .delete(`/colors/${color}`)
+      .delete(`/colors/${color.id}`)
       .then((res) => {
       setColorToEdit(res.data);
     })
@@ -98,9 +100,9 @@ const ColorList = ({ colors, updateColors }) => {
         </form>
       )}
       <div className="spacer" />
-      {/* stretch - build another form here to add a color */}
+      <ColorForm updateColors={updateColors}/>
+      
     </div>
-  );
-};
+      )}
 
 export default ColorList;
