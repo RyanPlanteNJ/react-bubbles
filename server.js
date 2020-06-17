@@ -89,7 +89,7 @@ let colors = [
   }
 ];
 
-let nextId = colors.id++;
+let nextId = 12;
 
 function authenticator(req, res, next) {
   const { authorization } = req.headers;

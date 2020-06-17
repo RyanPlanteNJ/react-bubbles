@@ -14,7 +14,7 @@ const ColorForm = ({updateColors}) => {
         axiosWithAuth()
         .post('/colors', colorToAdd)
         .then(res=>{
-            updateColors();
+            updateColors(res.data);
             setColorToAdd(initialColor);
         })
         .catch(err=>console.log("error: ", err));
